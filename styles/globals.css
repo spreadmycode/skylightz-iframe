@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  width: 100%;
+  height: 100px;
+  max-height: 100px;
+  min-height: 100px;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+
+@font-face {
+  font-family: "Edistys";
+  font-style: normal;
+  font-weight: normal;
+  src: local("EDISTYS"), url("../public/fonts/EDISTYS.TTF") format("truetype");
+}
+
+@font-face {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Raleway"), url("../public/fonts/Raleway-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Orbitron";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Orbitron"), url("../public/fonts/Orbitron.ttf") format("truetype");
+}
+
+.font-edistys {
+  font-family: "Edistys";
+}
+
+.font-raleway {
+  font-family: "Raleway";
+}
+
+.font-orbitron {
+  font-family: "Orbitron";
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
