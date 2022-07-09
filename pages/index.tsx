@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
 import Layout from "@/components/Layout";
-import Mint721A from "@/components/Mint721A";
+import Mint721 from "@/components/Mint721";
 
 const Home: NextPage = () => {
   return (
     <Layout>
-      <Mint721A />
+      <Mint721 />
     </Layout>
   );
 };

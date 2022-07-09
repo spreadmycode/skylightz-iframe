@@ -3,8 +3,8 @@ import { toast } from "react-toastify";
 import { Contract } from "@ethersproject/contracts";
 import {
   CHAIN_ID,
-  ERC721A_CONTRACT_ADDRESS,
-  ERC721A_CONTRACT_ABI,
+  ERC721_CONTRACT_ADDRESS,
+  ERC721_CONTRACT_ABI,
   ETHERSCAN_LINKS,
   NETWORK_TYPES,
   TAG_PROVIDER,
@@ -14,7 +14,7 @@ import useCatchTxError from "@/hooks/useCatchTxError";
 import useWalletConnection from "@/hooks/useWalletConnection";
 import { truncateAddress } from "@/libs/utils";
 
-const Mint721A = () => {
+const Mint721 = () => {
   const { active, account, chainId, library, connectWallet, disconnectWallet } =
     useWalletConnection();
   const { fetchWithCatchTxError, loading } = useCatchTxError();
@@ -54,14 +54,14 @@ const Mint721A = () => {
         return;
       }
 
-      const erc721A = new Contract(
-        ERC721A_CONTRACT_ADDRESS,
-        ERC721A_CONTRACT_ABI,
+      const erc721 = new Contract(
+        ERC721_CONTRACT_ADDRESS,
+        ERC721_CONTRACT_ABI,
         library.getSigner()
       );
 
       const tx = await fetchWithCatchTxError(() => {
-        return erc721A.mint(1);
+        return erc721.mint(1);
       });
 
       if (tx) {
@@ -142,4 +142,4 @@ const Mint721A = () => {
   );
 };
 
-export default Mint721A;
+export default Mint721;

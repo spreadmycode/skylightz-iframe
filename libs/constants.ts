@@ -30,10 +30,10 @@ export const NETWORK_TYPES = [
   "Rinkeby Test Network",
 ];
 
-export const ERC721A_CONTRACT_ADDRESS =
+export const ERC721_CONTRACT_ADDRESS =
   "0xe9B3dd6d5791D9aF0351E7F1b7934f838Ee4b6f6";
 
-export const ERC721A_CONTRACT_ABI = [
+export const ERC721_CONTRACT_ABI = [
   {
     inputs: [
       { internalType: "uint256", name: "_pMaxSupply", type: "uint256" },
