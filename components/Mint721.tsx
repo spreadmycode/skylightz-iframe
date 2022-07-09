@@ -71,6 +71,7 @@ const Mint721 = () => {
             <a
               href={`${ETHERSCAN_LINKS[chainId]}/tx/${tx.transactionHash}`}
               target="_blank"
+              rel="noreferrer"
             >
               View on Block Explorer
             </a>
