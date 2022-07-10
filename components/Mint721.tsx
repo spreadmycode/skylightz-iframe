@@ -70,7 +70,7 @@ const Mint721 = () => {
               View on Block Explorer
             </a>
           </div>,
-          {autoClose: 10 * 1000}
+          { autoClose: 10 * 1000 }
         );
       }
     } catch (e: any) {
@@ -87,16 +87,18 @@ const Mint721 = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (active && account) {
+      toast.success(`${truncateAddress(account)} Connected`);
+    } else {
+      toast.info("Wallet Disconnected");
+    }
+  }, [active, account]);
+
   return (
     <div className="w-full flex flex-row justify-end items-center">
       {active ? (
         <>
-          <img className="w-4 h-4 mr-2 object-cover" src="/images/icons/icon-metamask.png" />
-          <p
-            className="hidden md:flex mr-10 text-base text-left text-white font-semibold font-raleway cursor-pointer"
-          >
-            {truncateAddress(account)}
-          </p>
           <button
             disabled={loading}
             className="w-40 px-3 py-2 mr-1 inline-flex flex-row justify-center items-center text-center text-base font-semibold font-raleway bg-[#1e73be] hover:bg-[#145d9c] text-white transition duration-500"
@@ -120,7 +122,7 @@ const Mint721 = () => {
                 <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-white"></div>
               </div>
             ) : (
-              "DISCONNECT"
+              truncateAddress(account)
             )}
           </button>
         </>
@@ -129,7 +131,10 @@ const Mint721 = () => {
           className="w-40 px-3 py-2 mr-1 space-x-2 inline-flex flex-row justify-center items-center text-center text-base font-semibold font-raleway bg-[#1e73be] hover:bg-[#145d9c] text-white transition duration-500"
           onClick={connect}
         >
-          <img className="w-5 h-5 object-cover" src="/images/icons/icon-metamask.png" />
+          <img
+            className="w-5 h-5 object-cover"
+            src="/images/icons/icon-metamask.png"
+          />
           <span>CONNECT</span>
         </button>
       )}
