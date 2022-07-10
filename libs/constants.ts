@@ -31,31 +31,14 @@ export const NETWORK_TYPES = [
 ];
 
 export const ERC721_CONTRACT_ADDRESS =
-  "0xe9B3dd6d5791D9aF0351E7F1b7934f838Ee4b6f6";
+  "0x46ad33c5F9ad505Ed179308E49D0561a1f363725";
 
 export const ERC721_CONTRACT_ABI = [
   {
-    inputs: [
-      { internalType: "uint256", name: "_pMaxSupply", type: "uint256" },
-      { internalType: "string", name: "_pBaseURI", type: "string" },
-    ],
+    inputs: [{ internalType: "string", name: "_pBaseURI", type: "string" }],
     stateMutability: "nonpayable",
     type: "constructor",
   },
-  { inputs: [], name: "ApprovalCallerNotOwnerNorApproved", type: "error" },
-  { inputs: [], name: "ApprovalQueryForNonexistentToken", type: "error" },
-  { inputs: [], name: "ApproveToCaller", type: "error" },
-  { inputs: [], name: "BalanceQueryForZeroAddress", type: "error" },
-  { inputs: [], name: "MintERC2309QuantityExceedsLimit", type: "error" },
-  { inputs: [], name: "MintToZeroAddress", type: "error" },
-  { inputs: [], name: "MintZeroQuantity", type: "error" },
-  { inputs: [], name: "OwnerQueryForNonexistentToken", type: "error" },
-  { inputs: [], name: "OwnershipNotInitializedForExtraData", type: "error" },
-  { inputs: [], name: "TransferCallerNotOwnerNorApproved", type: "error" },
-  { inputs: [], name: "TransferFromIncorrectOwner", type: "error" },
-  { inputs: [], name: "TransferToNonERC721ReceiverImplementer", type: "error" },
-  { inputs: [], name: "TransferToZeroAddress", type: "error" },
-  { inputs: [], name: "URIQueryForNonexistentToken", type: "error" },
   {
     anonymous: false,
     inputs: [
@@ -99,27 +82,6 @@ export const ERC721_CONTRACT_ABI = [
       { indexed: false, internalType: "bool", name: "approved", type: "bool" },
     ],
     name: "ApprovalForAll",
-    type: "event",
-  },
-  {
-    anonymous: false,
-    inputs: [
-      {
-        indexed: true,
-        internalType: "uint256",
-        name: "fromTokenId",
-        type: "uint256",
-      },
-      {
-        indexed: false,
-        internalType: "uint256",
-        name: "toTokenId",
-        type: "uint256",
-      },
-      { indexed: true, internalType: "address", name: "from", type: "address" },
-      { indexed: true, internalType: "address", name: "to", type: "address" },
-    ],
-    name: "ConsecutiveTransfer",
     type: "event",
   },
   {
@@ -174,22 +136,50 @@ export const ERC721_CONTRACT_ABI = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "address", name: "_addr", type: "address" }],
-    name: "checkInWhitelist",
-    outputs: [{ internalType: "uint8", name: "", type: "uint8" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "currentHoldCount",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
+    inputs: [{ internalType: "uint256", name: "_pTokenId", type: "uint256" }],
+    name: "burn",
+    outputs: [],
+    stateMutability: "nonpayable",
     type: "function",
   },
   {
     inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
     name: "getApproved",
+    outputs: [{ internalType: "address", name: "", type: "address" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getBaseExtension",
+    outputs: [{ internalType: "string", name: "", type: "string" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getBaseURI",
+    outputs: [{ internalType: "string", name: "", type: "string" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getMaxSupply",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getPrice",
+    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "getWithdrawer",
     outputs: [{ internalType: "address", name: "", type: "address" }],
     stateMutability: "view",
     type: "function",
@@ -206,19 +196,13 @@ export const ERC721_CONTRACT_ABI = [
   },
   {
     inputs: [],
-    name: "isPresale",
-    outputs: [
-      {
-        internalType: "enum AsyncPlayground.SALE_TYPE",
-        name: "",
-        type: "uint8",
-      },
-    ],
+    name: "isPaused",
+    outputs: [{ internalType: "bool", name: "", type: "bool" }],
     stateMutability: "view",
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "quantity", type: "uint256" }],
+    inputs: [],
     name: "mint",
     outputs: [],
     stateMutability: "payable",
@@ -286,6 +270,15 @@ export const ERC721_CONTRACT_ABI = [
     type: "function",
   },
   {
+    inputs: [
+      { internalType: "string", name: "_baseExtension", type: "string" },
+    ],
+    name: "setBaseExtension",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [{ internalType: "string", name: "_newBaseURI", type: "string" }],
     name: "setBaseURI",
     outputs: [],
@@ -293,22 +286,29 @@ export const ERC721_CONTRACT_ABI = [
     type: "function",
   },
   {
-    inputs: [],
-    name: "setPreSale",
+    inputs: [{ internalType: "uint256", name: "_pMaxSupply", type: "uint256" }],
+    name: "setMaxSupply",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [],
-    name: "setPublicSale",
+    inputs: [{ internalType: "bool", name: "_paused", type: "bool" }],
+    name: "setPaused",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
-    inputs: [{ internalType: "address[]", name: "list", type: "address[]" }],
-    name: "setWhitelist",
+    inputs: [{ internalType: "uint256", name: "_price", type: "uint256" }],
+    name: "setPrice",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [{ internalType: "address", name: "_withdrawer", type: "address" }],
+    name: "setWithdrawer",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -328,7 +328,7 @@ export const ERC721_CONTRACT_ABI = [
     type: "function",
   },
   {
-    inputs: [{ internalType: "uint256", name: "tokenId", type: "uint256" }],
+    inputs: [{ internalType: "uint256", name: "_tokenId", type: "uint256" }],
     name: "tokenURI",
     outputs: [{ internalType: "string", name: "", type: "string" }],
     stateMutability: "view",
@@ -355,6 +355,13 @@ export const ERC721_CONTRACT_ABI = [
   {
     inputs: [{ internalType: "address", name: "newOwner", type: "address" }],
     name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "withdraw",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
