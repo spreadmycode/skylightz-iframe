@@ -68,7 +68,7 @@ const Mint721 = () => {
 
       if (tx) {
         toast.success(
-          <div className="flex flex-row space-y-2">
+          <div className="flex flex-col justify-center items-start space-y-2">
             <p>Successfully Minted!</p>
             <a
               href={`${ETHERSCAN_LINKS[chainId]}/tx/${tx.transactionHash}`}
@@ -77,7 +77,8 @@ const Mint721 = () => {
             >
               View on Block Explorer
             </a>
-          </div>
+          </div>,
+          {autoClose: 10 * 1000}
         );
       }
     } catch (e: any) {
