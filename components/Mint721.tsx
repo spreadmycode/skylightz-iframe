@@ -9,10 +9,12 @@ import {
   NETWORK_TYPES,
   TAG_PROVIDER,
   WALLET,
+  PRICE,
 } from "@/libs/constants";
 import useCatchTxError from "@/hooks/useCatchTxError";
 import useWalletConnection from "@/hooks/useWalletConnection";
 import { truncateAddress } from "@/libs/utils";
+import { ethers } from "ethers";
 
 const Mint721 = () => {
   const { active, account, chainId, library, connectWallet, disconnectWallet } =
@@ -61,7 +63,7 @@ const Mint721 = () => {
       );
 
       const tx = await fetchWithCatchTxError(() => {
-        return erc721.mint(1);
+        return erc721.mint({ value: ethers.utils.parseEther(PRICE) });
       });
 
       if (tx) {

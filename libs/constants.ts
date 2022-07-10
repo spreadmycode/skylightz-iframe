@@ -12,7 +12,8 @@ export const WALLET = {
   icon: "/images/icons/icon-metamask.png",
 };
 
-export const CHAIN_ID = Number(process.env.NEXT_PUBLIC_CHAIN_ID);
+export const CHAIN_ID = Number(process.env.NEXT_PUBLIC_CHAIN_ID!);
+export const PRICE = process.env.NEXT_PUBLIC_PRICE!;
 
 export const ETHERSCAN_LINKS = [
   "",
