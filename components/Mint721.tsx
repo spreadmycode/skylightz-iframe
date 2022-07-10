@@ -35,14 +35,6 @@ const Mint721 = () => {
     disconnectWallet(null);
   };
 
-  const copyAddress = (e: any) => {
-    e.preventDefault();
-
-    if (!account || !navigator) return;
-    navigator.clipboard.writeText(account);
-    toast.success("Copied to clipboard.");
-  };
-
   const mintNFT = async (e: any = null) => {
     if (e) {
       e.preventDefault();
@@ -101,8 +93,7 @@ const Mint721 = () => {
         <>
           <img className="w-4 h-4 mr-2 object-cover" src="/images/icons/icon-metamask.png" />
           <p
-            className="mr-10 text-base text-left text-white font-semibold font-raleway cursor-pointer"
-            onClick={copyAddress}
+            className="hidden md:flex mr-10 text-base text-left text-white font-semibold font-raleway cursor-pointer"
           >
             {truncateAddress(account)}
           </p>
