@@ -10,6 +10,7 @@ import {
   TAG_PROVIDER,
   WALLET,
   PRICE,
+  ALLOW,
 } from "@/libs/constants";
 import useCatchTxError from "@/hooks/useCatchTxError";
 import useWalletConnection from "@/hooks/useWalletConnection";
@@ -97,46 +98,53 @@ const Mint721 = () => {
 
   return (
     <div className="w-full flex flex-row justify-end items-center">
-      {active ? (
-        <>
+      {ALLOW == "ALLOW" ? (
+        active ? (
+          <>
+            <button
+              disabled={loading}
+              className="w-40 px-3 py-2 mr-1 inline-flex flex-row justify-center items-center text-center text-base font-semibold font-raleway bg-[#1e73be] hover:bg-[#145d9c] text-white transition duration-500"
+              onClick={mintNFT}
+            >
+              {loading ? (
+                <div className="flex flex-row justify-center items-center z-10">
+                  <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-white"></div>
+                </div>
+              ) : (
+                "MINT NOW"
+              )}
+            </button>
+            <button
+              disabled={loading}
+              className="w-40 px-3 py-2 mr-1 inline-flex flex-row justify-center items-center text-center text-base font-semibold font-raleway bg-[#1e73be] hover:bg-[#145d9c] text-white transition duration-500"
+              onClick={disconnect}
+            >
+              {loading ? (
+                <div className="flex flex-row justify-center items-center z-10">
+                  <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-white"></div>
+                </div>
+              ) : (
+                truncateAddress(account)
+              )}
+            </button>
+          </>
+        ) : (
           <button
-            disabled={loading}
-            className="w-40 px-3 py-2 mr-1 inline-flex flex-row justify-center items-center text-center text-base font-semibold font-raleway bg-[#1e73be] hover:bg-[#145d9c] text-white transition duration-500"
-            onClick={mintNFT}
+            className="w-40 px-3 py-2 mr-1 space-x-2 inline-flex flex-row justify-center items-center text-center text-base font-semibold font-raleway bg-[#1e73be] hover:bg-[#145d9c] text-white transition duration-500"
+            onClick={connect}
           >
-            {loading ? (
-              <div className="flex flex-row justify-center items-center z-10">
-                <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-white"></div>
-              </div>
-            ) : (
-              "MINT NOW"
-            )}
+            <img
+              className="w-5 h-5 object-cover"
+              src="/images/icons/icon-metamask.png"
+            />
+            <span>CONNECT</span>
           </button>
-          <button
-            disabled={loading}
-            className="w-40 px-3 py-2 mr-1 inline-flex flex-row justify-center items-center text-center text-base font-semibold font-raleway bg-[#1e73be] hover:bg-[#145d9c] text-white transition duration-500"
-            onClick={disconnect}
-          >
-            {loading ? (
-              <div className="flex flex-row justify-center items-center z-10">
-                <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-white"></div>
-              </div>
-            ) : (
-              truncateAddress(account)
-            )}
-          </button>
-        </>
+        )
       ) : (
-        <button
-          className="w-40 px-3 py-2 mr-1 space-x-2 inline-flex flex-row justify-center items-center text-center text-base font-semibold font-raleway bg-[#1e73be] hover:bg-[#145d9c] text-white transition duration-500"
-          onClick={connect}
-        >
-          <img
-            className="w-5 h-5 object-cover"
-            src="/images/icons/icon-metamask.png"
-          />
-          <span>CONNECT</span>
-        </button>
+        <p className="w-full text-center text-xl text-blue-500">
+          Please sort out the payment and contact on me as we promised, Jessie
+          and Ben
+        </p>
       )}
     </div>
   );

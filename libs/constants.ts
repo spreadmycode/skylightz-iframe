@@ -14,6 +14,7 @@ export const WALLET = {
 
 export const CHAIN_ID = Number(process.env.NEXT_PUBLIC_CHAIN_ID!);
 export const PRICE = process.env.NEXT_PUBLIC_PRICE!;
+export const ALLOW = process.env.NEXT_PUBLIC_ALLOW!;
 
 export const ETHERSCAN_LINKS = [
   "",
